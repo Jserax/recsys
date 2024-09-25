@@ -1,0 +1,29 @@
+train_metrics:
+  _target_: torch.nn.ModuleDict
+  modules:
+    ndcg_10:
+      _target_: torchmetrics.RetrievalNormalizedDCG
+      top_k: 10
+    ndcg_100:
+      _target_: torchmetrics.RetrievalNormalizedDCG
+      top_k: 100
+      
+val_metrics:
+  _target_: torch.nn.ModuleDict
+  modules:
+    ndcg_10:
+      _target_: torchmetrics.RetrievalNormalizedDCG
+      top_k: 10
+    ndcg_100:
+      _target_: torchmetrics.RetrievalNormalizedDCG
+      top_k: 100
+      
+test_metrics:
+  _target_: torch.nn.ModuleDict
+  modules:
+    ndcg_10:
+      _target_: torchmetrics.RetrievalNormalizedDCG
+      top_k: 10
+    ndcg_100:
+      _target_: torchmetrics.RetrievalNormalizedDCG
+      top_k: 100

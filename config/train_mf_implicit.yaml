@@ -1,0 +1,15 @@
+defaults:
+  - data: mf_implicit
+  - model: mf_mse
+  - metrics:  mf_metrics
+  - callbacks: callbacks
+  - logger: wandb
+  - trainer: gpu
+  - paths: default
+  - _self_
+
+trainer:
+  devices: 1
+  max_epochs: 60
+logger:
+  project: "RecSystem - MF"

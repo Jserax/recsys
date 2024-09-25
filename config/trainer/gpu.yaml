@@ -1,0 +1,8 @@
+defaults:
+  - default
+  - _self_
+  
+
+accelerator: gpu
+devices: 2
+precision: 16

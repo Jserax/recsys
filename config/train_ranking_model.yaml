@@ -1,0 +1,15 @@
+defaults:
+  - data: ranking_data
+  - model: ranking_model
+  - metrics:  ranking_metrics
+  - callbacks: callbacks
+  - logger: wandb
+  - trainer: gpu
+  - paths: default
+  - _self_
+
+trainer:
+  devices: 1
+  max_epochs: 20
+logger:
+  project: "RecSystem - Ranking"

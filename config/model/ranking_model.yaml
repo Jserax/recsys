@@ -1,0 +1,54 @@
+
+_target_: src.model.ranking_lightning.RankingModel
+candidate_model:
+  _target_: src.model.mf_model.MatrixFactorizaiton
+  weights_path: ${paths.root_dir}/mf_model.pt
+  user_size: 6040
+  item_size: 3706
+  emb_dim: 256
+  dropout: 0.4
+
+ranking_model:
+  _target_: src.model.ranking_model.RankingModel
+  user_size: 6040
+  item_size: 3706
+  num_layers: 4
+  dim: 128
+  hid_dim: 512
+  num_heads: 8
+  attn_dropout: 0.3
+  out_dropout: 0.3
+  emb_dropout: 0.3
+  attn_bias: True
+  mlp_bias: True
+  relative_bias: True
+  relative_bias_inter: 64
+  relative_bias_slope: 8.0
+
+
+criterion:
+  _target_: src.model.lr_loss.lambdarank_loss
+  _partial_: true
+  top_k: 10
+
+optimizer:
+  _target_: torch.optim.AdamW
+  _partial_: true
+  weight_decay: 0.1
+
+scheduler:
+  _target_: src.utils.scheduler.LRCosineScheduler
+  _partial_: true
+  warmup_steps: 380
+  cycle_steps: 1900
+  cycle_mult: 1
+  max_lr: 0.002
+  min_lr: 0.000002
+  gamma: 1.0
+
+train_metrics:
+  ${metrics.train_metrics}
+val_metrics:
+  ${metrics.val_metrics}
+test_metrics:
+  ${metrics.test_metrics}

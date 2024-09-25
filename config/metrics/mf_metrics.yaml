@@ -1,0 +1,38 @@
+train_metrics:
+  _target_: torch.nn.ModuleDict
+  modules:
+    mse:
+      _target_: torchmetrics.MeanSquaredError
+      squared: false
+    mae:
+      _target_: torchmetrics.MeanAbsoluteError
+
+val_metrics:
+  _target_: torch.nn.ModuleDict
+  modules:
+    mse:
+      _target_: torchmetrics.MeanSquaredError
+      squared: false
+    mae:
+      _target_: torchmetrics.MeanAbsoluteError
+    recall_100:
+      _target_: torchmetrics.RetrievalRecall
+      top_k: 100 
+    ndcg_100:
+      _target_: torchmetrics.RetrievalNormalizedDCG
+      top_k: 100
+
+test_metrics:
+  _target_: torch.nn.ModuleDict
+  modules:
+    mse:
+      _target_: torchmetrics.MeanSquaredError
+      squared: false
+    mae:
+      _target_: torchmetrics.MeanAbsoluteError
+    recall_100:
+      _target_: torchmetrics.RetrievalRecall
+      top_k: 100
+    ndcg_100:
+      _target_: torchmetrics.RetrievalNormalizedDCG
+      top_k: 100

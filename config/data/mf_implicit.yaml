@@ -1,0 +1,8 @@
+_target_: src.data.lightning_data.MFDataModule
+data_path: ${paths.data_dir}/ratings.dat
+batch_size: 64
+val_size: 5
+test_size: 5
+implicit_weights: [0.5, 5]
+num_workers: 2
+pin_memory: True

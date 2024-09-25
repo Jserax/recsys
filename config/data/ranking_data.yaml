@@ -1,0 +1,7 @@
+_target_: src.data.lightning_data.RankingDataModule
+data_path: ${paths.data_dir}/ratings.dat
+batch_size: 64
+val_size: 5
+test_size: 5
+num_workers: 2
+pin_memory: True

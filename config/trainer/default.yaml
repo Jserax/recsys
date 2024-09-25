@@ -1,0 +1,14 @@
+_target_: lightning.pytorch.trainer.Trainer
+callbacks: ${callbacks}
+logger: ${logger}
+default_root_dir: ${paths.output_dir}
+min_epochs: 1
+max_epochs: 24
+accelerator: cpu
+devices: 1
+gradient_clip_algorithm: "norm"
+gradient_clip_val: 1.0
+log_every_n_steps: 1
+enable_model_summary: false
+check_val_every_n_epoch: 1
+deterministic: False
